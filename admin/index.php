@@ -3,7 +3,7 @@
         <!-- Début de la section du contenu principal --> 
         <div class="main-content">
             <div class="wrapper">
-                <h1>Dashboard</h1>
+                <h1>Tableau de bord</h1>
                 <br><br>
 
                 <?php
@@ -14,28 +14,78 @@
                 }
                  ?>
 
+                 <br><br>
+
                 <div class="col-4 text-center">
-                    <h1>5</h1>
+
+                    <?php
+                        //sql Requête
+                        $sql = "SELECT * FROM category";
+                        //Exécuter la requête 
+                        $res = mysqli_query($conn, $sql);
+                        //Compter les lignes
+                        $count = mysqli_num_rows($res);
+
+                    ?>
+
+                    <h1><?php echo $count; ?></h1>
                     <br/>
-                    Categories
+                    Catégories
                 </div>
 
                 <div class="col-4 text-center">
-                    <h1>5</h1>
+
+                    <?php
+                        //sql Requête
+                        $sql2 = "SELECT * FROM food";
+                        //Exécuter la requête
+                        $res2 = mysqli_query($conn, $sql2);
+                        //Compter les lignes
+                        $count2 = mysqli_num_rows($res2);
+                    ?>
+                
+                    <h1><?php echo $count2; ?></h1>
                     <br/>
-                    Categories
+                    Aliments
                 </div>
 
                 <div class="col-4 text-center">
-                    <h1>5</h1>
+
+                    <?php
+                        //sql Requête
+                        $sql3 = "SELECT * FROM order";
+                        //Exécuter la requête
+                        $res3 = mysqli_query($conn, $sql3);
+                        //Compter les lignes
+                        $count3 = mysqli_num_rows($res3);
+                    ?>
+                
+                    <h1><?php echo $count3; ?></h1>
                     <br/>
-                    Categories
+                    Total des commandes
                 </div>
 
                 <div class="col-4 text-center">
-                    <h1>5</h1>
+                    <?php
+                        //Créer une requête SQL pour obtenir le total des recettes générées
+                        //Fonction d'agrégation en SQL
+                        $sql4 = "SELECT SUM(total) AS Total FROM order WHERE status 'Delivered'";
+
+                        //Exécuter la requête
+                        $res4 = mysqli_query($conn, $sql4);
+
+                        //Obtenir la valeur
+                        $count4 = mysqli_num_rows($res4);
+
+                        //Obtenir le revenu total
+                        $total_revenue = $row4['Total'];
+
+                    ?>
+                
+                    <h1><?php echo $total_revenue; ?></h1>
+                    
                     <br/>
-                    Categories
+                    Recettes générées
                 </div>
 
                 <div class="clearfix"></div>

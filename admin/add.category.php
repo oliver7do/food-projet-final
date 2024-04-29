@@ -59,7 +59,7 @@
 
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="submit" value="Ajouter une catégorie" class="btn-secondary">
+                        <input type="submit" name="submit_add_category" value="Ajouter une catégorie" class="btn-secondary">
                     </td>
                 </tr>
 
@@ -72,7 +72,7 @@
         <?php
 
         //Vérifier si le bouton d'envoi est cliqué ou non
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit_add_category'])) {
             //echo "Cliquer";
 
             //1. Obtenir la valeur du formulaire Catégorie
@@ -100,32 +100,34 @@
             if (isset($_FILES['image']['name'])) {
                 // Télécharger l'image
                 //Pour télécharger une image, nous avons besoin du nom de l'image, du chemin d'accès à la source et du chemin d'accès à la destination.
+                $image_name = $_FILES['image']['name'];
 
-                $îmage_name = $_FILES['image']['name'];
-
-                //Auto rename our image
-                //Get the extension of our image (jpg, png, gif, etc) e.g. "special.food1.jpg"
-                $ext = end(explode('.', $image_name));
-
-                //Rename the image
-                $image_name = "Food_Category_".rand(000, 999).'.'.$ext; // e.g. Food_Category_834.jpg
-
-
-                $source_path = $_FILES['image']['tmp_name'];
-
-                $destination_path = "../images/category/" . $image_name;
-
-                //Enfin, téléchargez l'image
-                $upload = move_uploaded_file($source_path, $destination_path);
-
-                // Vérifier si l'image est téléchargée ou non
-                //Et si l'image n'est pas téléchargée, nous arrêterons le processus et afficherons un message d'erreur.
-                if ($upload==false) 
+                //Upload the image only if image is selected
+                if($image_name != "")
                 {
-                    //Définir le message
-                    $_SESSION['upload'] = "<div class='error'>Échec du téléchargement de l'image. </div>";
-                    //Redirect to Add Category Page
-                    header('location:'.SITEURL.'admin/add.category.php');
+                    //Auto rename our image
+
+                    //Rename the image
+                    $images_name = "Food_Category_".rand(000, 999).'.'.$image_name; // e.g. Food_Category_834.jpg
+
+                    $source_path = $_FILES['image']['tmp_name'];
+
+                    $destination_path = "../images/category/" . $images_name;
+
+                    //Enfin, téléchargez l'image
+                    $upload = move_uploaded_file($source_path, $destination_path);
+
+                    // Vérifier si l'image est téléchargée ou non
+                    //Et si l'image n'est pas téléchargée, nous arrêterons le processus et afficherons un message d'erreur.
+                    if ($upload==false) 
+                    {
+                        //Définir le message
+                        $_SESSION['upload'] = "<div class='error'>Échec du téléchargement de l'image. </div>";
+                        //Redirect to Add Category Page
+                        header('location:'.SITEURL.'admin/add.category.php');
+                        //Stop the process
+                        die();
+                    }
                 }
             } 
             else 
@@ -137,7 +139,7 @@
             //2. Créer une requête SQL pour insérer une catégorie dans la base de données
             $sql = "INSERT INTO category SET
                     title='$title',
-                    image_name='$image_name',
+                    image_name=$images_name,
                     featured='$featured',
                     active='$active'
                     ";

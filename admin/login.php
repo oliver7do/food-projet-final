@@ -55,19 +55,25 @@
     {
         //Processus de connexion
         //1. Récupérer les données du formulaire de connexion
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        // $username = $_POST['username'];
+        //$password = $_POST['password'];
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+
+        $raw_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $password = mysqli_real_escape_string($conn, $raw_password);
 
         //2. SQL pour vérifier si l'utilisateur avec le nom d'utilisateur et le mot de passe existe ou non
-        $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+        $sql = "SELECT * FROM user WHERE username='$username'";
 
         //3. Exécuter la requête
         $res = mysqli_query($conn, $sql);
-
         //4. Compter les lignes pour vérifier si l'utilisateur existe ou non
-        $count = mysqli_num_rows($res);
+        // $count = mysqli_num_rows($res);
 
-        if($count==1)
+        $row = mysqli_fetch_assoc($res);
+        $pass = password_verify($_POST['password'], $row["password"]);
+
+        if(!empty($row) && $pass)
         {
             //Utilisateur disponible et succès de la connexion
             $_SESSION['login'] = "<div class='success'>Connexion réussie.</div>";

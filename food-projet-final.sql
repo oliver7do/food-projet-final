@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 22 avr. 2024 à 16:44
+-- Généré le : lun. 29 avr. 2024 à 07:54
 -- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Version de PHP : 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,10 +40,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `title`, `image_name`, `featured`, `active`) VALUES
-(1, 'Bolo', '', 'Yes', 'Yes'),
-(2, 'figo', '', 'Yes', 'Yes'),
-(3, 'liga', '', 'Yes', 'Yes'),
-(4, 'dada', 'Food_Category_149.', 'No', 'No');
+(6, 'test', '49bddc9e-b499-444c-b8be-2d11693e.jpg', 'Yes', 'Yes'),
+(7, 'ok', '49bddc9e-b499-444c-b8be-2d11693e.jpg', 'Yes', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -100,7 +98,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `full_name`, `username`, `password`) VALUES
-(3, 'Domingos de Oliveira', 'oliver', '0000');
+(5, 'Domingos de Oliveira', 'oliver', '1111');
 
 --
 -- Index pour les tables déchargées
@@ -138,7 +136,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `food`
@@ -156,7 +154,7 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

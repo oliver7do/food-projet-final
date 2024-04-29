@@ -1,7 +1,7 @@
 /*
-    Author: Domingos de Oliveira
-    Theme: Food Order website Admin
-    Version: 1.0; 
+    Auteur : Domingos de Oliveira
+    Thème : Food Order website Admin
+    Version : 1.0 ; 
 
 */
 
@@ -45,7 +45,7 @@ table tr td{
     padding: 1%;
 }
  
-/* Botao primario */
+/* Bouton primaire */
 
 .btn-primary{
     background-color: #1e90ff;
@@ -78,7 +78,7 @@ table tr td{
     color:#ff4757
 }
 
-/* Botao segundario */
+/* Bouton secondaire */
 
 .btn-secondary{
     background-color: #147c35;
@@ -92,7 +92,7 @@ table tr td{
     background-color: #21da5b;
 }
 
-/* Botao danger */
+/* Bouton danger */
 
 .btn-danger{
     background-color: #ff6b81;
@@ -146,13 +146,13 @@ table tr td{
 
 
 
-/* Css for footer */
+/* Css pour footer */
 .footer{
     background-color: #ff4757;
     color: white;
 }
 
-/* Css for login */
+/* Css pour login */
 .login{
     border: 1px solid grey;
     width: 30%;

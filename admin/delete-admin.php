@@ -15,7 +15,7 @@
     // Vérifier si la requête a été exécutée avec succès ou non
     if($res==true)
     {
-        //Query excuted successully and Admin Deleted
+        //La requête a été exécutée avec succès et l'administrateur l'a supprimée.
         //echo "Admin Supprimé"; 
         //Créer une variable de session pour afficher le message
         $_SESSION['delete'] = "<div class='error'>Admin supprimé avec succès.</div>";

@@ -76,7 +76,7 @@
                                     //Utilisation d'une boucle while pour obtenir toutes les données de la base de données.
                                     //Et la boucle while fonctionnera tant que nous aurons des données dans la base de données.
                                     
-                                    //Get individual data
+                                    //Obtention des données individuelles
                                     $id=$rows['id'];
                                     $full_name=$rows['full_name'];
                                     $username=$rows['username'];
